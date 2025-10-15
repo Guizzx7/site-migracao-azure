@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Innovate Solutions - Migração para Nuvem Azure</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* Estilos baseados no seu modelo, aprimorados para o profissionalismo */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: #f4f7fb;
+            color: #333;
+            overflow-x: hidden;
+        }
+        header {
+            background: linear-gradient(135deg, #0078D7, #004C8C);
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+        }
+        header h1 {
+            margin-bottom: 5px;
+            font-weight: 300;
+        }
+        header .founders {
+            font-size: 0.9rem;
+            margin-top: 5px;
+            opacity: 0.9;
+        }
+        main {
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr; /* Coluna para conteúdo e coluna para detalhes */
+            gap: 20px;
+        }
+        section {
+            margin-bottom: 20px; /* Reduzido o margin-bottom para melhor layout */
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            padding: 25px;
+            transition: transform 0.3s ease;
+        }
+        section:hover {
+            transform: translateY(-2px);
+        }
+        h2 {
+            color: #005A9E;
+            border-left: 6px solid #0078D7;
+            padding-left: 10px;
+            margin-top: 0;
+        }
+        .diagram {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+            justify-items: center;
+        }
+        .layer {
+            background-color: #E6F0FA;
+            border: 2px solid #0078D7;
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s;
+            min-height: 100px; /* Para manter a consistência */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .layer:hover {
+            transform: scale(1.03);
+            background-color: #D2E8FF;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .layer.active {
+            background-color: #0078D7;
+            color: white;
+            border-color: #005A9E;
+            box-shadow: 0 0 15px rgba(0, 120, 212, 0.7);
+        }
+        .layer.active .icon {
+            color: white;
+        }
+        .icon {
+            font-size: 2.2rem;
+            margin-bottom: 8px;
+            color: #0078D7;
+        }
+        
+        /* Estilos do Painel de Detalhes (Substitui o .details interno) */
+        #details-panel {
+            grid-column: 2 / 3;
+            background: #F9FCFF;
+            border-left: 5px solid #28a745; /* Verde para destaque */
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+            min-height: 300px;
+        }
+        #details-panel h3 {
+            color: #28a745;
+            border-bottom: 1px solid #D4EDDA;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        #details-content p {
+            margin: 10px 0;
+            line-height: 1.5;
+        }
+        .highlight {
+            font-weight: bold;
+            color: #d9534f; /* Vermelho para custos */
+        }
+
+        /* Estilos de Tabela Aprimorados */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+            font-size: 0.95rem;
+        }
+        th {
+            background-color: #0078D7;
+            color: white;
+            text-align: center;
+        }
+        tr:nth-child(even) {
+            background-color: #f7f9fc;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #005A9E;
+            color: white;
+            margin-top: 30px;
+        }
+        
+        /* Layout responsivo */
+        @media (max-width: 900px) {
+            main {
+                grid-template-columns: 1fr; /* Em telas menores, o painel de detalhes fica abaixo */
+            }
+            #details-panel {
+                position: relative;
+                top: auto;
+                grid-column: 1 / 2;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Arquitetura em Nuvem - Innovate Solutions</h1>
+        <p>Plano de migração completo para Microsoft Azure</p>
+        <p class="founders">Fundadores: Guilherme Costa Soares | Inacio Castelo de Souza Amorim | Wallace Batista dos Santos | João Lucas Oliveira Martins</p>
+    </header>
+
+    <main>
+        <div style="grid-column: 1 / 2;">
+            <section>
+                <h2>1. Conceito e Fundamentos</h2>
+                <p>A computação em nuvem é um modelo tecnológico que permite o acesso sob demanda, via internet, a um conjunto de recursos computacionais configuráveis, como servidores, armazenamento e aplicações. Para a Innovate Solutions, isso representa a oportunidade de migrar sua infraestrutura de TI de servidores locais para um ambiente mais flexível e eficiente, otimizando o custo-benefício (trocando CAPEX por OPEX) e garantindo escalabilidade.</p>
+            </section>
+
+            <section>
+                <h2>2. Arquitetura da Solução (Diagrama Interativo)</h2>
+                <p>Clique em qualquer camada do diagrama abaixo para ver seus detalhes de implementação na coluna ao lado.</p>
+                <div class="diagram" id="interactive-diagram">
+                    
+                    <div class="layer" data-key="iaas">
+                        <div class="icon"><i class="fas fa-server"></i></div>
+                        <strong>IaaS: Máquinas Virtuais (VMs)</strong>
+                    </div>
+
+                    <div class="layer" data-key="paas">
+                        <div class="icon"><i class="fas fa-database"></i></div>
+                        <strong>PaaS: Azure SQL Database</strong>
+                    </div>
+                    
+                    <div class="layer" data-key="network">
+                        <div class="icon"><i class="fas fa-network-wired"></i></div>
+                        <strong>Rede Virtual (VNet) e Segurança</strong>
+                    </div>
+
+                    <div class="layer" data-key="blobstorage">
+                        <div class="icon"><i class="fas fa-hdd"></i></div>
+                        <strong>Armazenamento (Blob Storage)</strong>
+                    </div>
+                    
+                    <div class="layer" data-key="monitoring">
+                        <div class="icon"><i class="fas fa-chart-bar"></i></div>
+                        <strong>Monitoramento e Gestão</strong>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>3. Plano de Implementação (9 Semanas)</h2>
+                <p>O cronograma de implementação foi estruturado em fases sequenciais para garantir uma transição segura e eficiente com impacto mínimo. Clique nas fases para ver o detalhamento do cronograma.</p>
+                <div class="diagram phase-diagram">
+                    <div class="layer small-layer" data-key="fase1">
+                        <div class="icon"><i class="fas fa-clipboard-list"></i></div>
+                        <strong>Fase 1: Planejamento</strong><br>Semanas 1-2
+                    </div>
+                    <div class="layer small-layer" data-key="fase2">
+                        <div class="icon"><i class="fas fa-tools"></i></div>
+                        <strong>Fase 2: Execução e Migração</strong><br>Semanas 3-6
+                    </div>
+                    <div class="layer small-layer" data-key="fase3">
+                        <div class="icon"><i class="fas fa-check-double"></i></div>
+                        <strong>Fase 3: Validação e Otimização</strong><br>Semanas 7-8
+                    </div>
+                    <div class="layer small-layer" data-key="fase4">
+                        <div class="icon"><i class="fas fa-graduation-cap"></i></div>
+                        <strong>Fase 4: Conclusão e Lições</strong><br>Semana 9
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>4. Custos Estimados (OPEX)</h2>
+                <table>
+                    <tr><th>Serviço</th><th>Aplicação</th><th>Custo Estimado Mensal (R$)</th></tr>
+                    <tr><td>Máquinas Virtuais (VMs)</td><td>Hospedagem das aplicações críticas (IaaS)</td><td><span class="highlight">8.000</span> (Baseado em 10 VMs)</td></tr>
+                    <tr><td>Blob Storage</td><td>Arquivos e Backups (2TB)</td><td><span class="highlight">300</span></td></tr>
+                    <tr><td>Transferência de Dados</td><td>Tráfego de saída (Egress)</td><td><span class="highlight">150</span></td></tr>
+                    <tr><td>Serviços Adicionais</td><td>Segurança, Monitoramento e Serviços PaaS de BD</td><td><span class="highlight">1.550</span></td></tr>
+                    <tr><th colspan="2">Total Estimado Mensal (Já com descontos como Reserved Instances)</th><th>≈ R$ 10.000</th></tr>
+                </table>
+            </section>
+        </div>
+
+        <div id="details-panel">
+            <h3>Detalhes do Item Selecionado</h3>
+            <div id="details-content">
+                <p class="initial-message">Clique em qualquer camada do diagrama (IaaS, PaaS, ou uma Fase) para ver os detalhes completos extraídos do documento.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>Innovate Solutions © 2025 | Projeto de Migração para Microsoft Azure</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const flowLayers = document.querySelectorAll('.layer');
+            const detailsContent = document.getElementById('details-content');
+
+            // DADOS CORRIGIDOS E DETALHADOS (Baseado no seu documento)
+            const allData = {
+                // --- Camadas do Diagrama ---
+                'iaas': {
+                    title: 'IaaS: Máquinas Virtuais (VMs)',
+                    type: 'Modelo de Serviço (IaaS)',
+                    description: 'Fornece recursos de computação. É o modelo mais flexível. Utilizado para hospedar as Máquinas Virtuais (VMs) no Azure, replicando o ambiente dos servidores locais.',
+                    details: 'O custo estimado é de R$ 800 por VM. Para 10 VMs, totaliza aproximadamente R$ 8.000 por mês. Considera descontos como o Azure Hybrid Benefit.'
+                },
+                'paas': {
+                    title: 'PaaS: Azure SQL Database',
+                    type: 'Modelo de Serviço (PaaS)',
+                    description: 'Oferece um ambiente para desenvolver e implantar aplicações sem se preocupar com a infraestrutura subjacente.',
+                    details: 'O Banco de Dados SQL do Azure será utilizado como um serviço totalmente gerenciado (PaaS), automatizando tarefas de manutenção como atualizações e backups.'
+                },
+                'network': {
+                    title: 'Rede Virtual (VNet) e Segurança',
+                    type: 'Componente de Arquitetura',
+                    description: 'Implementação de Azure Virtual Network (VNet) para estabelecer um ambiente de nuvem privado e isolado.',
+                    details: 'A VNet será conectada de forma segura ao escritório da Innovate Solutions, garantindo controle de tráfego via Network Security Groups e proteção adicional.'
+                },
+                'blobstorage': {
+                    title: 'Armazenamento de Blobs (Blob Storage)',
+                    type: 'Componente de Arquitetura',
+                    description: 'Destinado a dados não estruturados, como arquivos e backups, priorizando segurança e baixo custo.',
+                    details: 'A simulação de custos prevê 2TB de uso para o Blob Storage, com custo estimado de R$ 300 mensais.'
+                },
+                'monitoring': {
+                    title: 'Monitoramento e Gestão',
+                    type: 'Componente de Gestão',
+                    description: 'Uso de Azure Monitor e Log Analytics para garantir o monitoramento contínuo de desempenho e otimização de custos.',
+                    details: 'A segurança é reforçada com o Azure Defender for Cloud, garantindo proteção de dados e conformidade com regulamentações.'
+                },
+                
+                // --- Fases do Cronograma ---
+                'fase1': {
+                    title: 'Fase 1: Planejamento e Estruturação',
+                    type: 'Cronograma (Semanas 1-2)',
+                    description: 'Levantamento detalhado da infraestrutura e aplicações, definição de prioridades e capacitação da equipe.',
+                    details: 'Configuração da estrutura base no Azure: Rede Virtual (VNet), segurança e identidades (Active Directory).'
+                },
+                'fase2': {
+                    title: 'Fase 2: Execução e Migração',
+                    type: 'Cronograma (Semanas 3-6)',
+                    description: 'Início progressivo da migração, começando por ambientes de desenvolvimento/teste e avançando para cargas de trabalho de produção.',
+                    details: 'Movimentação de Máquinas Virtuais, bancos de dados e arquivos para o Azure com monitoramento contínuo de desempenho.'
+                },
+                'fase3': {
+                    title: 'Fase 3: Validação e Otimização',
+                    type: 'Cronograma (Semanas 7-8)',
+                    description: 'Realização de testes exaustivos de performance, segurança e funcionalidade.',
+                    details: 'Otimização de custos/desempenho e início do desligamento gradual da infraestrutura local para maximizar a economia.'
+                },
+                'fase4': {
+                    title: 'Fase 4: Conclusão e Custos',
+                    type: 'Cronograma (Semana 9)',
+                    description: 'Conclusão do processo, avaliação dos resultados, documentação técnica e consolidação das lições aprendidas.',
+                    details: 'Confirmação do custo mensal estimado em R$ 10.000 e preparação para o gerenciamento de custos contínuo (FinOps).'
+                }
+            };
+
+            // Função que renderiza o conteúdo no painel de detalhes
+            function updateDetails(key) {
+                const data = allData[key];
+
+                if (!data) {
+                    detailsContent.innerHTML = '<p class="initial-message">Detalhes não encontrados para este item.</p>';
+                    return;
+                }
+
+                // Cria o HTML dinâmico
+                let htmlContent = `
+                    <h3>${data.title}</h3>
+                    <p><strong>Modelo/Fase:</strong> ${data.type}</p>
+                    <p><strong>Descrição:</strong> ${data.description}</p>
+                `;
+
+                // Adiciona detalhes adicionais
+                if (data.details) {
+                    htmlContent += `<p><strong>Detalhes de Implementação:</strong> ${data.details}</p>`;
+                }
+                
+                detailsContent.innerHTML = htmlContent;
+            }
+
+            // Anexa o evento de clique a todas as camadas interativas
+            flowLayers.forEach(layer => {
+                layer.addEventListener('click', () => {
+                    const dataKey = layer.getAttribute('data-key');
+
+                    // 1. Remove a classe 'active' de todos os elementos
+                    flowLayers.forEach(l => l.classList.remove('active'));
+
+                    // 2. Adiciona a classe 'active' ao elemento clicado
+                    layer.classList.add('active');
+
+                    // 3. Atualiza o painel de detalhes
+                    updateDetails(dataKey);
+                });
+            });
+
+            // Inicializa o diagrama mostrando os detalhes da primeira fase por padrão para não ficar vazio
+            const initialKey = 'iaas';
+            const initialLayer = document.querySelector(`[data-key="${initialKey}"]`);
+            if (initialLayer) {
+                initialLayer.click();
+            }
+        });
+    </script>
+</body>
+</html>
